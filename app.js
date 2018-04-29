@@ -58,7 +58,7 @@ var controller = (function(budgetCtrl, UICtrl){
 
 
         var input = UICtrl.getInput();
-        console.log(input);
+       
 
 
 
