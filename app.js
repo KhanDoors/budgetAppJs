@@ -110,12 +110,17 @@ var UIController = (function(){
         },
 
         clearFields: function(){
-            var fields, fieldArr;
+            var fields, fieldsArr;
 
-            fields = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
+            fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
 
-            fields = Array.prototype.slice.call(fields);
+            fieldsArr = Array.prototype.slice.call(fields);
 
+            fieldsArr.forEach(function(current, index, array){
+                current.value = "";
+            });
+
+            fieldsArr[0].focus();
         },
 
         getDOMstrings: function(){
@@ -145,6 +150,7 @@ var controller = (function(budgetCtrl, UICtrl){
 
     
 
+
     var ctrlAddItem = function(){
         var input, newItem;
 
@@ -156,6 +162,10 @@ var controller = (function(budgetCtrl, UICtrl){
 
 
     UICtrl.addListItem(newItem, input.type);
+
+
+       UICtrl.clearFields(); 
+
 
 
 
