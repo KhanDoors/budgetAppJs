@@ -173,22 +173,15 @@ var UIController = (function() {
     
     
     var formatNumber = function(num, type) {
-        var numSplit, int, dec, type;
-        
         num = Math.abs(num);
-        num = num.toFixed(2);
-
-        numSplit = num.split('.');
-
-        int = numSplit[0];
-        if (int.length > 3) {
-            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
-        }
-
-        dec = numSplit[1];
-
-        return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
-
+     
+        let formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+        });
+     
+        return ((type === 'exp') ? '-' : '+') + ' ' + formatter.format(num);
     };
     
     
