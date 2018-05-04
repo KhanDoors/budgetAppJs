@@ -57,10 +57,7 @@ var budgetController = (function() {
         addItem: function(type, des, val) {
             var newItem, ID;
             
-            //[1 2 3 4 5], next ID = 6
-            //[1 2 4 6 8], next ID = 9
-            // ID = last ID + 1
-            
+                        
             // Create new ID
             if (data.allItems[type].length > 0) {
                 ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
@@ -86,11 +83,7 @@ var budgetController = (function() {
         deleteItem: function(type, id) {
             var ids, index;
             
-            // id = 6
-            //data.allItems[type][id];
-            // ids = [1 2 4  8]
-            //index = 3
-            
+                      
             ids = data.allItems[type].map(function(current) {
                 return current.id;
             });
@@ -120,21 +113,12 @@ var budgetController = (function() {
                 data.percentage = -1;
             }            
             
-            // Expense = 100 and income 300, spent 33.333% = 100/300 = 0.3333 * 100
+            
         },
         
         calculatePercentages: function() {
             
-            /*
-            a=20
-            b=10
-            c=40
-            income = 100
-            a=20/100=20%
-            b=10/100=10%
-            c=40/100=40%
-            */
-            
+                     
             data.allItems.exp.forEach(function(cur) {
                cur.calcPercentage(data.totals.inc);
             });
@@ -190,15 +174,7 @@ var UIController = (function() {
     
     var formatNumber = function(num, type) {
         var numSplit, int, dec, type;
-        /*
-            + or - before number
-            exactly 2 decimal points
-            comma separating the thousands
-
-            2310.4567 -> + 2,310.46
-            2000 -> + 2,000.00
-            */
-
+        
         num = Math.abs(num);
         num = num.toFixed(2);
 
@@ -206,7 +182,7 @@ var UIController = (function() {
 
         int = numSplit[0];
         if (int.length > 3) {
-            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3); //input 23510, output 23,510
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
         }
 
         dec = numSplit[1];
@@ -226,7 +202,7 @@ var UIController = (function() {
     return {
         getInput: function() {
             return {
-                type: document.querySelector(DOMstrings.inputType).value, // Will be either inc or exp
+                type: document.querySelector(DOMstrings.inputType).value, 
                 description: document.querySelector(DOMstrings.inputDescription).value,
                 value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
             };
@@ -317,8 +293,7 @@ var UIController = (function() {
             var now, months, month, year;
             
             now = new Date();
-            //var christmas = new Date(2016, 11, 25);
-            
+                        
             months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             month = now.getMonth();
             
