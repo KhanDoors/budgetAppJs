@@ -150,8 +150,6 @@ var budgetController = (function() {
 })();
 
 
-
-
 // UI CONTROLLER
 var UIController = (function() {
     
@@ -317,8 +315,6 @@ var UIController = (function() {
     };
     
 })();
-
-
 
 
 // GLOBAL APP CONTROLLER
